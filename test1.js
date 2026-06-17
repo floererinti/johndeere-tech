@@ -41,5 +41,5 @@
   const count = errs ? (Array.isArray(errs) ? errs.length : Object.keys(errs).length) : 0;
   console.log(`[XSS-PoC] createUsers ${EMAIL} (${ROLE}) @ company ${COMPANY}:`,
     count ? { rejected: errs } : '✅ no validation errors — admin created, setup email sent to ' + EMAIL);
-  console.log('[XSS-PoC] full response:', res);
+  console.log({ message: '[XSS-PoC] full response', data: res });
 })();
